@@ -1,7 +1,7 @@
 """puzzle"""
 def validate_board(board: list) -> bool:
     """
-    Function that checks if the logic puzzle is correct
+    Function that checks if the logic puzzle is correct.
     >>> validate_board(["**** ****//n","***1 ****//n",\
 "**  3****//n","* 4 1****//n","     9 5 //n"," 6  83  *//n",\
 "3   1  **//n","  8  2***//n","  2  ****"])
@@ -23,12 +23,14 @@ def validate_board(board: list) -> bool:
             return False
     for i in range(0, 9, 3):
         for j in range(0, 9, 3):
-            block = board[i][j:j + 3] + board[i + 1][j:j + 3] + board[i + 2][j:j + 3]
-            block_values = [val for val in block if val.isdigit()]
+            block_values = []
+            for x in range(3):
+                for y in range(3):
+                    if board[i + x][j + y].isdigit():
+                        block_values.append(board[i + x][j + y])
             if len(block_values) != len(set(block_values)):
                 return False
     return True
-
 
 # print(validate_board([
 #  "**** ****",
