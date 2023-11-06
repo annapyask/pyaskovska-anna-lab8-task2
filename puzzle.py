@@ -23,7 +23,6 @@ def validate_board(board: list) -> bool:
             block_values = [val for val in block if val.isdigit()]
             if len(block_values) != len(set(block_values)):
                 return False
-            
     return True
 
 
